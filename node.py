@@ -8,7 +8,7 @@ class Node(object):
     def __init__(self):
         self._id = next(Node.new_id)
 
-    async def do_action(self):
+    async def run(self):
         while True:
             await asyncio.sleep(5)
             print(f"{self} performed action")

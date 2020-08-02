@@ -13,7 +13,7 @@ async def main():
 
     print("Pool initialized")
 
-    await asyncio.gather(*[n.do_action() for n in pool])
+    await asyncio.gather(*[n.run() for n in pool])
 
     print("Main ended")
 
