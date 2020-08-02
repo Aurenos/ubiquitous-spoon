@@ -1,7 +1,6 @@
 import asyncio
 from random import randint
 
-from node import Node
 from topology import Topology
 
 
@@ -13,8 +12,14 @@ async def main_loop(topology: Topology, tick: int):
 
         node_id = randint(0, topology.size - 1)
         payload = randint(100, 999)
-        print(f"Sending {payload} to Node {node_id}")
         topology.send_message(node_id, payload)
+
+        for n in topology.pool:
+            try:
+                msg = n.output_queue.get_nowait()
+                topology.broadcast_message(msg)
+            except asyncio.QueueEmpty:
+                pass
 
 
 async def main(size: int, main_tick: int, node_tick: int):
@@ -26,8 +31,8 @@ async def main(size: int, main_tick: int, node_tick: int):
 
 if __name__ == '__main__':
     TOPOLOGY_SIZE = 5
-    MAIN_LOOP_TICK = 2
-    NODE_TICK = 6
+    MAIN_LOOP_TICK = 5
+    NODE_TICK = 2
 
     asyncio.run(
         main(
