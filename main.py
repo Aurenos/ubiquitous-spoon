@@ -1,5 +1,4 @@
 import asyncio
-from typing import List
 from random import randint
 
 from node import Node
