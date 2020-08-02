@@ -1,4 +1,5 @@
 import asyncio
+from typing import List
 
 from node import Node
 
@@ -6,7 +7,7 @@ from node import Node
 async def main():
     print("Main!")
 
-    pool = list()
+    pool: List[Node] = list()
 
     for _ in range(5):
         pool.append(Node())
