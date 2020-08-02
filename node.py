@@ -1,10 +1,12 @@
 import asyncio
-from uuid import uuid1
+import itertools
 
 
 class Node(object):
+    new_id = itertools.count()
+
     def __init__(self):
-        self._id = uuid1()
+        self._id = next(Node.new_id)
 
     async def do_action(self):
         while True:

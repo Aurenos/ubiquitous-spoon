@@ -10,6 +10,14 @@
       "request": "launch",
       "program": "${file}",
       "console": "internalConsole"
+    },
+
+    {
+      "name": "Python: Main",
+      "type": "python",
+      "request": "launch",
+      "program": "main.py",
+      "console": "internalConsole"
     }
   ]
 }
